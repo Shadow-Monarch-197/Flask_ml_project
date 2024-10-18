@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link href="{{ url_for('static', filename='dist/css/output.css') }}" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+        <h1 class="text-2xl font-bold mb-6 text-center">Results</h1>
+        <ul>
+            {% for idx, marks in enumerate(student_marks) %}
+            <li>Question {{ idx + 1 }}: {{ "%.2f"|format(marks) }} marks</li>
+            {% endfor %}
+        </ul>
+        <p class="text-xl font-bold text-center">Total Marks: {{ "%.2f"|format(total_marks) }}</p>
+        <a href="{{ url_for('upload') }}" class="text-blue-500 hover:underline">Go back to upload more files</a>
+    </div>
+</body>
+</html>
